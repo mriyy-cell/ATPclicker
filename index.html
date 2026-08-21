@@ -1,25 +1,47 @@
-ATPクリッカー
-  
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATPクリッカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <div class="container">
+    <h1>ATP合成ゲーム</h1>
 
+    <!-- スコア表示エリア -->
+    <div class="score-board">
+      <h2>ATP: <span id="atp-display">0</span></h2>
+      <p>毎秒の合成量: <span id="aps-display">0</span> ATP/s</p>
+      <p class="sub-text">1クリックあたりの合成量: <span id="click-power-display">1</span> ATP</p>
+    </div>
 
-  
-    ATP合成ゲーム
+    <!-- ATPクリックエリア（画像＋フォールバック文字） -->
+    <div class="main-action">
+      <button id="click-btn">
+        <img src="atp.png" alt="ATPを合成する！" id="atp-img" onerror="this.style.display='none'; document.getElementById('alt-text').style.display='inline';">
+        <span id="alt-text" style="display:none;">ATPを合成する！</span>
+      </button>
+    </div>
 
-    
-    
-      ATP: 0
-      毎秒の合成量: 0 ATP/s
-    
+    <!-- ショップエリア -->
+    <div class="shop">
+      <h3>施設・酵素の強化</h3>
 
-    
-    
-      ATPを合成する！
-    
+      <!-- ミトコンドリア購入ボタン -->
+      <button id="buy-mito" class="shop-btn">
+        <img src="mitochondria.png" alt="ミトコンドリア" class="shop-icon" onerror="this.style.display='none';">
+        <div class="btn-text">
+          <strong>ミトコンドリアを購入</strong><br>
+          <small>(コスト: <span id="mito-cost">10</span> ATP | 毎秒 +1 ATP)</small><br>
+          <small>所持数: <span id="mito-count">0</span>個</small>
+        </div>
+      </button>
+    </div>
+  </div>
 
-    
-    
-      施設・酵素の強化
-      
-        ミトコンドリアを購入
-        (コスト: 10 ATP | 毎秒 +1 ATP)
+  <script src="script.js"></script>
+</body>
+</html>
