@@ -1,52 +1,104 @@
 body {
-  font-family: sans-serif;
-  background-color: #f4f7f6;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #eef2f5;
   text-align: center;
   padding: 20px;
   margin: 0;
 }
 
 .container {
-  max-width: 400px;
+  max-width: 420px;
   margin: 0 auto;
   background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* ATP合成ボタンのデザイン */
+.score-board h2 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin: 10px 0;
+}
+
+.sub-text {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+/* メインクリックボタン（ATP画像）のデザイン */
 #click-btn {
-  font-size: 1.5rem;
-  padding: 20px 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin: 20px 0;
+  padding: 0;
+  transition: transform 0.1s ease;
+}
+
+/* ボタンを押した時にポヨッと縮む演出 */
+#click-btn:active {
+  transform: scale(0.92);
+}
+
+#atp-img {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+}
+
+/* 画像がない場合のバックアップ用文字ボタン見た目 */
+#alt-text {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 20px 30px;
   background-color: #ff9800;
   color: white;
-  border: none;
   border-radius: 50px;
-  cursor: pointer;
   box-shadow: 0 4px #e68a00;
-  transition: transform 0.1s;
 }
 
-#click-btn:active {
-  transform: translateY(4px);
-  box-shadow: none;
-}
-
-/* ショップのボタン */
+/* ショップボタン */
 .shop-btn {
   width: 100%;
   margin-top: 15px;
-  padding: 12px;
-  font-size: 1rem;
+  padding: 12px 15px;
+  font-size: 0.95rem;
   background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 4px #388e3c;
+  transition: all 0.1s;
 }
 
+.shop-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px #388e3c;
+}
+
+/* ATPが足りなくて買えない時の見た目 */
 .shop-btn:disabled {
-  background-color: #ccc;
+  background-color: #bdc3c7;
+  box-shadow: 0 4px #95a5a6;
   cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.shop-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.btn-text {
+  text-align: left;
 }
