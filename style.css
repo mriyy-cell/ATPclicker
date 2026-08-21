@@ -1,101 +1,144 @@
+@charset "UTF-8";
+
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background-color: #eef2f5;
-  text-align: center;
-  padding: 20px;
+  font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
   margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* 細胞内（細胞質基質）をイメージした流動的アニメーション背景 */
+  background: linear-gradient(-45deg, #2c5364, #203a43, #0f2027, #1e3c72);
+  background-size: 400% 400%;
+  animation: cytoFlow 15s ease infinite;
+}
+
+@keyframes cytoFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .container {
-  max-width: 420px;
-  margin: 0 auto;
-  background: white;
+  max-width: 440px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
   padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
 }
 
 .score-board h2 {
-  font-size: 2.2rem;
-  color: #2c3e50;
+  font-size: 2.5rem;
+  color: #1a252f;
   margin: 10px 0;
+  font-weight: 800;
 }
 
 .sub-text {
-  font-size: 0.85rem;
-  color: #7f8c8d;
+  font-size: 0.9rem;
+  color: #576574;
 }
 
-/* メインクリックボタン（ATP画像）のデザイン */
+/* クリックエリアと大型化アイコン */
+.main-action {
+  position: relative; /* +1 エフェクトの基準点 */
+  margin: 30px 0;
+}
+
 #click-btn {
   background: none;
   border: none;
   cursor: pointer;
   outline: none;
-  margin: 20px 0;
   padding: 0;
-  transition: transform 0.1s ease;
+  transition: transform 0.08s ease;
 }
 
-/* ボタンを押した時にポヨッと縮む演出 */
 #click-btn:active {
   transform: scale(0.92);
 }
 
+/* アイコンをさらに大きく設定 */
 #atp-img {
-  width: 160px;
-  height: 160px;
+  width: 220px;
+  height: 220px;
   object-fit: contain;
-  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
 }
 
-/* 画像がない場合のバックアップ用文字ボタン見た目 */
 #alt-text {
   display: inline-block;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding: 20px 30px;
+  padding: 30px 40px;
   background-color: #ff9800;
   color: white;
-  border-radius: 50px;
-  box-shadow: 0 4px #e68a00;
+  border-radius: 60px;
+  box-shadow: 0 6px #e68a00;
+}
+
+/* ポップアップする "+○" テキストのアニメーション（ゴシック体） */
+.floating-number {
+  position: absolute;
+  font-family: "Arial Black", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #ff9800;
+  text-shadow: 2px 2px 0px #fff, -1px -1px 0px #fff;
+  pointer-events: none; /* マウスイベントを透過 */
+  animation: floatUp 0.8s ease-out forwards;
+  z-index: 10;
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1);
+  }
 }
 
 /* ショップボタン */
 .shop-btn {
   width: 100%;
   margin-top: 15px;
-  padding: 12px 15px;
+  padding: 14px;
   font-size: 0.95rem;
-  background-color: #4caf50;
+  background-color: #10ac84;
   color: white;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  box-shadow: 0 4px #388e3c;
-  transition: all 0.1s;
+  box-shadow: 0 4px #0e8a6a;
 }
 
-.shop-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px #388e3c;
-}
-
-/* ATPが足りなくて買えない時の見た目 */
 .shop-btn:disabled {
-  background-color: #bdc3c7;
-  box-shadow: 0 4px #95a5a6;
+  background-color: #c8d6e5;
+  box-shadow: 0 4px #8395a7;
   cursor: not-allowed;
   opacity: 0.7;
 }
 
 .shop-icon {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   object-fit: contain;
 }
 
