@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+ body {
   font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
   margin: 0;
   padding: 20px;
@@ -10,10 +11,26 @@ body {
   justify-content: center;
   align-items: center;
   
-  /* 細胞内（細胞質基質）をイメージした流動的アニメーション背景 */
-  background: linear-gradient(-45deg, #2c5364, #203a43, #0f2027, #1e3c72);
+  /* グラデーションの色設定 */
+  background-image: linear-gradient(-45deg, #1e3c72, #2a5298, #0f2027, #203a43);
+  /* アニメーション用に背景の表示サイズを大きく伸ばす */
   background-size: 400% 400%;
-  animation: cytoFlow 15s ease infinite;
+  /* 10秒かけてゆったりと背景位置を動かす */
+  animation: cytoFlow 10s ease infinite;
+}
+
+/* 背景を滑らかに移動させるアニメーション定義 */
+@keyframes cytoFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 }
 
 @keyframes cytoFlow {
