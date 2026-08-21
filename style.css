@@ -1,26 +1,41 @@
+/* style.css 全体を以下のように書き換えます */
 @charset "UTF-8";
-
 
 body {
   font-family: "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
   margin: 0;
-  padding: 20px;
+  padding: 0;
   min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  /* グラデーションの色設定 */
-  background-image: linear-gradient(-45deg, #1e3c72, #2a5298, #0f2027, #203a43);
-  /* アニメーション用に背景の表示サイズを大きく伸ばす */
-  background-size: 400% 400%;
-  /* 10秒かけてゆったりと背景位置を動かす */
-  animation: cytoFlow 10s ease infinite;
+  /* 背景全体も暖色系の激しいアニメーションに設定 */
+  background-image: linear-gradient(-45deg, #FF9800, #F44336, #2196F3, #FFC107);
+  background-size: 300% 300%;
+  animation: rapidFlow 5s ease-out infinite;
 }
 
-/* 背景を滑らかに移動させるアニメーション定義 */
-@keyframes cytoFlow {
+.container {
+  max-width: 440px;
+  width: 100%;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
+  position: relative;
+  
+  /* --- ここを修正：白い背景から暖色系アニメーションへ --- */
+  /* 白い背景(rgba(255, 255, 255, 0.92))と backdrop-filter を削除 */
+  /* 暖色系のグラデーションを設定 */
+  background-image: linear-gradient(135deg, #FFFDE7, #FFF8E1, #FFF3E0, #FFE0B2);
+  background-size: 200% 200%;
+  /* 2秒で色が切り替わる激しいアニメーション(rapidFlow)に変更 */
+  animation: rapidFlow 2s ease-in-out infinite;
+}
+
+/* 激しい色の変化を起こすアニメーション定義 */
+@keyframes rapidFlow {
   0% {
     background-position: 0% 50%;
   }
@@ -32,24 +47,7 @@ body {
   }
 }
 
-@keyframes cytoFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.container {
-  max-width: 440px;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(8px);
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  text-align: center;
-  position: relative;
-}
-
+/* 以降、スコアボードやボタンのデザインは以前のまま維持 */
 .score-board h2 {
   font-size: 2.5rem;
   color: #1a252f;
@@ -62,9 +60,8 @@ body {
   color: #576574;
 }
 
-/* クリックエリアと大型化アイコン */
 .main-action {
-  position: relative; /* +1 エフェクトの基準点 */
+  position: relative;
   margin: 30px 0;
 }
 
@@ -81,7 +78,6 @@ body {
   transform: scale(0.92);
 }
 
-/* アイコンをさらに大きく設定 */
 #atp-img {
   width: 220px;
   height: 220px;
@@ -89,26 +85,14 @@ body {
   filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
 }
 
-#alt-text {
-  display: inline-block;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 30px 40px;
-  background-color: #ff9800;
-  color: white;
-  border-radius: 60px;
-  box-shadow: 0 6px #e68a00;
-}
-
-/* ポップアップする "+○" テキストのアニメーション（ゴシック体） */
 .floating-number {
   position: absolute;
   font-family: "Arial Black", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
   font-weight: 900;
   font-size: 1.8rem;
-  color: #ff9800;
+  color: #FF9800;
   text-shadow: 2px 2px 0px #fff, -1px -1px 0px #fff;
-  pointer-events: none; /* マウスイベントを透過 */
+  pointer-events: none;
   animation: floatUp 0.8s ease-out forwards;
   z-index: 10;
 }
@@ -127,7 +111,6 @@ body {
   }
 }
 
-/* ショップボタン */
 .shop-btn {
   width: 100%;
   margin-top: 15px;
@@ -157,7 +140,7 @@ body {
   height: 45px;
   object-fit: contain;
 }
-　
+
 .btn-text {
   text-align: left;
 }
